@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Print WorkSpace') {
+            steps {
+                script {
+				    echo "Hello world"
+                    echo "当前的工作目录: ${env.WORKSPACE}"
+                }
+            }
+        }
+    }
+}
