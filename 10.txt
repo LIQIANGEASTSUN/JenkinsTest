@@ -1,0 +1,64 @@
+Started by user admin
+Checking out git https://github.com/LIQIANGEASTSUN/JenkinsTest.git into /Users/liqiang/.jenkins/workspace/TestProject1@script/a82089facc9f5b750180801ee6442a8ef978414d304ab5cc580f6728c566c0a8 to read testPipeline
+The recommended git tool is: NONE
+using credential a2be3c1d-f23f-430a-97f3-2d2d2d2c5d78
+ > git rev-parse --resolve-git-dir /Users/liqiang/.jenkins/workspace/TestProject1@script/a82089facc9f5b750180801ee6442a8ef978414d304ab5cc580f6728c566c0a8/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/LIQIANGEASTSUN/JenkinsTest.git # timeout=10
+Fetching upstream changes from https://github.com/LIQIANGEASTSUN/JenkinsTest.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5 (Apple Git-154)'
+using GIT_SSH to set credentials 
+Verifying host key using known hosts file
+ > git fetch --tags --force --progress -- https://github.com/LIQIANGEASTSUN/JenkinsTest.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b5d5b36daa4a1726ad18501a9e374ba9e4146668 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b5d5b36daa4a1726ad18501a9e374ba9e4146668 # timeout=10
+Commit message: "pipeline"
+ > git rev-list --no-walk b5d5b36daa4a1726ad18501a9e374ba9e4146668 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/liqiang/.jenkins/workspace/TestProject1
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential a2be3c1d-f23f-430a-97f3-2d2d2d2c5d78
+ > git rev-parse --resolve-git-dir /Users/liqiang/.jenkins/workspace/TestProject1/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/LIQIANGEASTSUN/JenkinsTest.git # timeout=10
+Fetching upstream changes from https://github.com/LIQIANGEASTSUN/JenkinsTest.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5 (Apple Git-154)'
+using GIT_SSH to set credentials 
+Verifying host key using known hosts file
+ > git fetch --tags --force --progress -- https://github.com/LIQIANGEASTSUN/JenkinsTest.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b5d5b36daa4a1726ad18501a9e374ba9e4146668 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b5d5b36daa4a1726ad18501a9e374ba9e4146668 # timeout=10
+Commit message: "pipeline"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Print WorkSpace)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Hello world
+[Pipeline] echo
+褰撳墠鐨勫伐浣滅洰褰�: /Users/liqiang/.jenkins/workspace/TestProject1
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
