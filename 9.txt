@@ -1,0 +1,21 @@
+Started by user admin
+Checking out git https://github.com/LIQIANGEASTSUN/JenkinsTest.git into /Users/liqiang/.jenkins/workspace/TestProject1@script/a82089facc9f5b750180801ee6442a8ef978414d304ab5cc580f6728c566c0a8 to read testPipeline
+The recommended git tool is: NONE
+using credential a2be3c1d-f23f-430a-97f3-2d2d2d2c5d78
+ > git rev-parse --resolve-git-dir /Users/liqiang/.jenkins/workspace/TestProject1@script/a82089facc9f5b750180801ee6442a8ef978414d304ab5cc580f6728c566c0a8/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/LIQIANGEASTSUN/JenkinsTest.git # timeout=10
+Fetching upstream changes from https://github.com/LIQIANGEASTSUN/JenkinsTest.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5 (Apple Git-154)'
+using GIT_SSH to set credentials 
+Verifying host key using known hosts file
+ > git fetch --tags --force --progress -- https://github.com/LIQIANGEASTSUN/JenkinsTest.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/remotes/main^{commit} # timeout=10
+ > git rev-parse remotes/main^{commit} # timeout=10
+ > git rev-parse remotes/main^{commit} # timeout=10
+ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
+ERROR: Maximum checkout retry attempts reached, aborting
+ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
+ERROR: Maximum checkout retry attempts reached, aborting
+Finished: FAILURE
