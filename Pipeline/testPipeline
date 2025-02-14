@@ -1,12 +1,14 @@
 
 fileUrl="AAAAAA"
 
-environment {
-    Name = "ABC"
-}
+
 
 pipeline {
     agent any
+	
+	environment {
+		Name = "ABC"
+	}
     stages {
         stage('Print WorkSpace') {
             steps {
