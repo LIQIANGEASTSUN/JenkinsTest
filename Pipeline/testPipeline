@@ -1,5 +1,5 @@
 
-fileUrl = "AAAAAA"
+fileUrl="AAAAAA"
 
 pipeline {
     agent any
@@ -29,7 +29,7 @@ pipeline {
 		// 流水线执行失败调用 failure
 		failure{
 			script {
-			    echo ${fileUrl}
+			    echo "${fileUrl}"
 				fileUrl = "BBBBBB"
 				// 如果构建失败，执行的脚本
 				echo "Build failed!"
@@ -40,7 +40,7 @@ pipeline {
 		// 流水线无论执行成功还是失败，都会调用 always
 		always {
 		    script{
-			    echo ${fileUrl}
+			    echo "${fileUrl}"
 				fileUrl = "CCCCCC"
 			    echo "This will always run, regardless of success or failure."
 			}
