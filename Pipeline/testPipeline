@@ -6,6 +6,7 @@ pipeline {
                 script {
 				    echo "Hello world"
                     echo "当前的工作目录: ${env.WORKSPACE}"
+					echo "BRANCH_NAME: ${env.BRANCH_NAME}"
                 }
             }
         }
