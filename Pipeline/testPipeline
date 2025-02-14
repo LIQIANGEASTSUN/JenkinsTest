@@ -20,6 +20,8 @@ pipeline {
 		// 流水线执行成功调用 success
 		success {                    
 			script {
+		        echo "${fileUrl}"
+				fileUrl = "BBBBBB"
 				// 如果构建成功，执行的脚本
 				echo "Build succeeded!"
 				// 可以在这里执行更多的操作，例如发送成功通知
@@ -30,7 +32,7 @@ pipeline {
 		failure{
 			script {
 			    echo "${fileUrl}"
-				fileUrl = "BBBBBB"
+				fileUrl = "CCCCCC"
 				// 如果构建失败，执行的脚本
 				echo "Build failed!"
 				// 可以在这里执行更多的操作，例如发送失败通知
@@ -41,7 +43,7 @@ pipeline {
 		always {
 		    script{
 			    echo "${fileUrl}"
-				fileUrl = "CCCCCC"
+				fileUrl = "DDDDDD"
 			    echo "This will always run, regardless of success or failure."
 			}
 		}
