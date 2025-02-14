@@ -20,11 +20,19 @@ pipeline {
                 }
             }
         }
+		
+		stage('Test') {
+		    steps {
+			    script {
+				    echo "stage Test"
+				}
+			}
+		}
     }
 	
-	// 流水线执行结束后调用 post
+	// 流水线 stage 执行结束后调用 post
 	post {
-		// 流水线无论执行成功还是失败，都会调用 always
+		// 执行到 post，无论运行状态是完成还是失败，都会第一个调用 always
 		always {
 		    script {
 			    echo "${fileUrl}"
@@ -56,6 +64,7 @@ pipeline {
 			}
 		}
 		
+		// 手动终止执行调用 aborted
 		aborted {
 		    script {
 			    echo "Aborted"
