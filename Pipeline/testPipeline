@@ -1,6 +1,10 @@
 
 fileUrl="AAAAAA"
 
+environment {
+    Name = "ABC"
+}
+
 pipeline {
     agent any
     stages {
@@ -22,6 +26,7 @@ pipeline {
 		    script {
 			    echo "${fileUrl}"
 				fileUrl = "BBBBBB"
+				echo "Name=${Name}"
 			    echo "This will always run, regardless of success or failure."
 			}
 		}
