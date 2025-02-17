@@ -8,7 +8,7 @@ echo "this is testShellUnity.sh"
 echo "WORKSPACE=${WORKSPACE}"
 UNITY_PATH=/Applications/Unity/Hub/Editor/2022.3.26f1/Unity.app/Contents/MacOS/Unity
 
-PROJECT_PATH="${WORKSPACE}/TestProject1/Project"
+PROJECT_PATH="${WORKSPACE}/Project"
 echo "PROJECT_PATH=${PROJECT_PATH}"
 
 # 设置环境变量
