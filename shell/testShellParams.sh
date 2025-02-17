@@ -11,3 +11,8 @@ echo "BRANCH_NAME=${BRANCH_NAME}"
 
 echo "ABC=${ABC}"
 echo "Type=${Type}"
+
+echo "MY_PARAM_ABC=${MY_PARAM_ABC}"
+echo "MY_PARAM_Type=${MY_PARAM_Type}"
+
+
