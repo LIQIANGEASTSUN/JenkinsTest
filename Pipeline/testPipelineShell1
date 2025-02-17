@@ -1,0 +1,36 @@
+
+pipeline {
+    agent any
+	
+    stages {
+        stage('Test Parameter') {
+            steps {
+                script {
+				    // 输出变量 ABC
+					echo "ABC=${ABC}"
+					// 输出变量 Type
+					echo "Type=${Type}"
+
+                    // 拼接 sh 脚本路径					
+					SHELL_PATH="${env.WORKSPACE}/shell/testShell.sh"
+					// 输出 sh 脚本路径
+					echo "SHELL_PATH=${SHELL_PATH}"
+					// 给脚本添加权限并运行
+					sh "chmod +x ${SHELL_PATH} && ${SHELL_PATH}"
+					
+					
+					// 拼接 sh 脚本路径
+					SHELL_PARAMS_PATH="${env.WORKSPACE}/shell/testShellParams.sh"
+					// 通过 withEnv 设置环境变量 MY_PARAM_ABC、MY_PARAM_Type 并传递给shell脚本
+                    withEnv(["MY_PARAM_ABC=${ABC}", "MY_PARAM_Type=${Type}"]) {
+					    // 给脚本添加权限并运行
+                        sh "chmod +x ${SHELL_PARAMS_PATH} && ${SHELL_PARAMS_PATH}"
+                    }
+					
+					SHELL_UNITY_PATH="${env.WORKSPACE}/shell/testShellUnity.sh"
+					sh "chmod +x ${SHELL_UNITY_PATH} && ${SHELL_UNITY_PATH}"
+                }
+            }
+        }
+    }
+}

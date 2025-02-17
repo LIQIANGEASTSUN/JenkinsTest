@@ -17,7 +17,7 @@ export MY_PARAM="ttttttAAAAAA"
 
 $UNITY_PATH -projectPath $PROJECT_PATH \
 -buildTarget android \
--executeMethod MergeTownAppPacker.AndroidCommandLineBuild \
+-executeMethod PojectExport.Export \
 -logfile - \
 -batchMode -quit \
 -GMMode 
