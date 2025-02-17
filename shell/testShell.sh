@@ -5,6 +5,7 @@
 
 echo "this is testShell.sh"
 
+# 输出 Jenkins 终点参数
 echo "Workspace=${WORKSPACE}"
 echo "BRANCH_NAME=${BRANCH_NAME}"
 
