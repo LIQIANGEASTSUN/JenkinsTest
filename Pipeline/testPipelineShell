@@ -6,12 +6,16 @@ pipeline {
         stage('Test Parameter') {
             steps {
                 script {
-				    echo "ABC=${ABC}"
+				    // 输出变量 ABC
+					echo "ABC=${ABC}"
+					// 输出变量 Type
 					echo "Type=${Type}"
+
+                    // 拼接 sh 脚本路径					
 					SHELL_PATH="${env.WORKSPACE}/shell/testShell.sh"
+					// 输出 sh 脚本路径
 					echo "SHELL_PATH=${SHELL_PATH}"
 					// 给脚本添加权限并运行
-					//sh -x -c "chmod +x ${SHELL_PATH} && ${SHELL_PATH}"
 					sh "chmod +x ${SHELL_PATH} && ${SHELL_PATH}"
                 }
             }
