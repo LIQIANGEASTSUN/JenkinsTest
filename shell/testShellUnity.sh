@@ -14,9 +14,10 @@ echo "PROJECT_PATH=${PROJECT_PATH}"
 # 设置环境变量
 export MY_PARAM="ttttttAAAAAA"
 
+
 $UNITY_PATH -projectPath $PROJECT_PATH \
--buildTarget ios \
--executeMethod PojectExport.PojectExport \
+-buildTarget android \
+-executeMethod MergeTownAppPacker.AndroidCommandLineBuild \
 -logfile - \
 -batchMode -quit \
 -GMMode 
