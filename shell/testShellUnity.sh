@@ -14,4 +14,4 @@ export MY_PARAM="ttttttAAAAAA"
 ${UNITY_PATH} -batchmode -quit -projectPath /path/to/your/project -executeMethod PojectExport.PojectExport
 
 
-
+echo "this is testShellUnity.sh end"

@@ -26,6 +26,9 @@ pipeline {
 					    // 给脚本添加权限并运行
                         sh "chmod +x ${SHELL_PARAMS_PATH} && ${SHELL_PARAMS_PATH}"
                     }
+					
+					SHELL_UNITY_PATH="${env.WORKSPACE}/shell/testShellUnity.sh"
+					sh "chmod +x ${SHELL_UNITY_PATH} && ${SHELL_UNITY_PATH}"
                 }
             }
         }
