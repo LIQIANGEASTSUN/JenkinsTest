@@ -1,0 +1,40 @@
+
+
+pipeline {
+    agent any
+	
+	// 在 Pipeline 中定义全局变量
+	environment {
+	    // 获取 Jenkins 中的变量通过 env. 如 env.WORKSPACE
+		WorkSpacePath = ${env.WORKSPACE}
+	}
+
+    stages {
+        stage('Print WorkSpace') {
+            steps {
+                script {
+				    // 全局变量，可以直接使用
+					echo "WorkSpacePath=${WorkSpacePath}"
+				    // 在这里也可以获取 env.WORKSPACE
+                    echo "当前的工作目录: ${env.WORKSPACE}"
+					// 当前构建的作业名称
+					echo "JOB_NAME: ${env.JOB_NAME}"
+					// 当前构建的编号（从 1 开始）
+					echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+					// 当前构建的唯一标识符，通常是构建的时间戳
+					echo "BUILD_ID: ${env.BUILD_ID}"
+					// 当前构建的 URL 地址
+					echo "BUILD_URL: ${env.BUILD_URL}"
+					// 当前构建执行的节点名称
+					echo "NODE_NAME: ${env.NODE_NAME}"
+					// 当前构建在节点上的执行器编号
+					echo "EXECUTOR_NUMBER: ${env.EXECUTOR_NUMBER}"
+					// 当前构建所使用的 Git 提交哈希（如果使用 Git 作为版本控制）
+					echo "GIT_COMMIT: ${env.GIT_COMMIT}"
+					// 当前构建所使用的 Git 分支（如果使用 Git 作为版本控制）
+					echo "GIT_BRANCH: ${env.GIT_BRANCH}"
+                }
+            }
+        }
+    }
+}
