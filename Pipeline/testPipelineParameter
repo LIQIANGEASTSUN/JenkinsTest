@@ -6,7 +6,7 @@ pipeline {
 	// 在 Pipeline 中定义全局变量
 	environment {
 	    // 获取 Jenkins 中的变量通过 env. 如 env.WORKSPACE
-		WorkSpacePath=${env.WORKSPACE}
+		WorkSpacePath="${env.WORKSPACE}"
 	}
 
     stages {
