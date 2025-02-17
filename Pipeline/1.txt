@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Test Parameter') {
+            steps {
+                script {
+                    echo "ABC=${ABC}"
+                    echo "Type=${Type}"
+                    SHELL_PATH="${env.WORKSPACE}/shell/testShell.sh"
+                    echo "SHELL_PATH=${SHELL_PATH}"
+                    // 给脚本添加权限并运行
+                    sh "chmod +x ${SHELL_PATH} && ${SHELL_PATH}"
+                }
+            }
+        }
+    }
+}

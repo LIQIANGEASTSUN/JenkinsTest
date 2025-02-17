@@ -11,7 +11,8 @@ pipeline {
 					SHELL_PATH="${env.WORKSPACE}/shell/testShell.sh"
 					echo "SHELL_PATH=${SHELL_PATH}"
 					// 给脚本添加权限并运行
-					sh -x -c "chmod +x ${SHELL_PATH} && ${SHELL_PATH}"
+					//sh -x -c "chmod +x ${SHELL_PATH} && ${SHELL_PATH}"
+					sh "chmod +x ${SHELL_PATH} && ${SHELL_PATH}"
                 }
             }
         }
