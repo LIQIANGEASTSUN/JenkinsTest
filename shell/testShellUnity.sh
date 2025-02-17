@@ -14,8 +14,12 @@ echo "PROJECT_PATH=${PROJECT_PATH}"
 # 设置环境变量
 export MY_PARAM="ttttttAAAAAA"
 
-
-${UNITY_PATH} -batchmode -quit -projectPath /path/to/your/project -executeMethod PojectExport.PojectExport
+$UNITY_PATH -projectPath $PROJECT_PATH \
+-buildTarget ios \
+-executeMethod PojectExport.PojectExport \
+-logfile - \
+-batchMode -quit \
+-GMMode 
 
 
 echo "this is testShellUnity.sh end"
