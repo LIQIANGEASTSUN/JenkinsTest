@@ -11,7 +11,7 @@ UNITY_PATH=/Applications/Unity/Hub/Editor/2022.3.26f1/Unity.app/Contents/MacOS/U
 export MY_PARAM="ttttttAAAAAA"
 
 
-${UNITY_PATH} -batchmode -quit -projectPath /path/to/your/project -executeMethod 
+${UNITY_PATH} -batchmode -quit -projectPath /path/to/your/project -executeMethod PojectExport.PojectExport
 
 
 
