@@ -1,0 +1,35 @@
+
+
+pipeline {
+    agent any
+	
+    // 自定义参数，在Jenkins 中显示
+	parameters {
+	    // 定义 string 类型参数
+		string(name: 'PARAM_NAME', defaultValue: 'default_value', description: 'This is a string parameter')
+		
+		// 定义 boolean 类型参数
+		booleanParam(name: 'ENABLE_FEATURE', defaultValue: false, description: 'Enable the feature')
+
+        // 定义选择类型参数		
+		choice(name: 'CHOICE_PARAM', choices: ['Option1', 'Option2', 'Option3'], description: 'Choose an option')
+		
+		// 定义密码类型参数
+		password(name: 'SECRET_PASSWORD', description: 'Enter your password')
+	}
+
+
+    stages {
+        stage('Test Parameter') {
+            steps {
+                script {
+				    // 获取参数值
+					echo "PARAM_NAME=${params.PARAM_NAME}"
+					echo "ENABLE_FEATURE=${params.ENABLE_FEATURE}"
+					echo "CHOICE_PARAM=${params.CHOICE_PARAM}"
+					echo "SECRET_PASSWORD=${params.SECRET_PASSWORD}"
+                }
+            }
+        }
+    }
+}
