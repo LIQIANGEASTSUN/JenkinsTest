@@ -6,6 +6,8 @@ pipeline {
         stage('Test Parameter') {
             steps {
                 script {
+				    echo "ABC=${ABC}"
+					echo "Type=${Type}"
 					SHELL_PATH="${env.WORKSPACE}/shell/testShell.sh"
 					echo "SHELL_PATH=${SHELL_PATH}"
 					sh "${SHELL_PATH}" 
