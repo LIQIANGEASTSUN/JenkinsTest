@@ -6,9 +6,7 @@ pipeline {
         stage('Test Parameter') {
             steps {
                 script {
-				    // 获取参数值
-					echo "PARAM_NAME=${params.PARAM_NAME}"
-					SHELL_PATH="#${env.WORKSPACE}/shell/testShell.sh"
+					SHELL_PATH="${env.WORKSPACE}/shell/testShell.sh"
 					echo "SHELL_PATH=${SHELL_PATH}"
 					sh "${SHELL_PATH}" 
                 }
