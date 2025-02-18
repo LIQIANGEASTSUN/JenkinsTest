@@ -32,7 +32,7 @@ public class EnvironmentUtil
             return defaultValue;
         }
 
-        return int.Parse(value);
+        return float.Parse(value);
     }
 
     public static bool GetBool(string key, bool defaultValue = false)
