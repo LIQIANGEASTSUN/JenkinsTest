@@ -43,8 +43,6 @@ public class EnvironmentUtil
             return defaultValue;
         }
 
-        Debug.LogError("EnvironmentUtil:" + value);
         return value.CompareTo("true") == 0;
-        //return bool.Parse(value);
     }
 }
