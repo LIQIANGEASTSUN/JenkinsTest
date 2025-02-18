@@ -6,7 +6,9 @@ pipeline {
         stage('Test Parameter') {
             steps {
                 script {
+				    // shell 脚本目录
 					SHELL_UNITY_PATH="${env.WORKSPACE}/shell/testShellUnity.sh"
+					// 给 shell 脚本添加权限并执行
 					sh "chmod +x ${SHELL_UNITY_PATH} && ${SHELL_UNITY_PATH}"
                 }
             }
