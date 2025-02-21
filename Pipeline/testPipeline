@@ -2,11 +2,11 @@
 fileUrl="AAAAAA"
 
 pipeline {
-    agent any
-	//agent {
+    //agent any
+	agent {
 	    label 'Mac'
 		customWorkspace '/Users/liqiang/.jenkins/workspace/Test/TestProject2' // 设置自定义工作空间路径
-	//}
+	}
 	
 	options {
         disableConcurrentBuilds()
