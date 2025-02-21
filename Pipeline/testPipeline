@@ -5,7 +5,6 @@ pipeline {
     //agent any
 	agent {
 	    label 'Mac'
-		customWorkspace '/Users/liqiang/.jenkins/workspace/Test/TestProject2' // 设置自定义工作空间路径
 	}
 	
 	options {
@@ -17,11 +16,17 @@ pipeline {
 		Name = "ABC"
 	}
     stages {
+	    stage('Prepare Workspace') {
+            steps {
+                dir('/Users/liqiang/.jenkins/workspace/Test/TestProject2') {
+                    // 在自定义工作区内进行后续步骤
+                    sh 'echo "Running in custom workspace..."'
+                }
+            }
+        }
+	
 		stage('Checkout') {
 			steps {
-                //properties([
-                    //[$class: 'CustomWorkspace', workspace: '/desired/path/to/workspace']
-                //])
                 checkout scm
             }
         }
