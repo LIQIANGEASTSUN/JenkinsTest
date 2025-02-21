@@ -2,11 +2,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using Google.Android.AppBundle.Editor;
 
 public class ProjectExportApk : Editor
 {
 
-    protected static BuildOptions s_BuildOptions = BuildOptions.CompressWithLz4HC;
+    private static BuildOptions s_BuildOptions = BuildOptions.CompressWithLz4HC;
+    private static bool _buildAAB = false;
+    private static bool BuildAAB
+    {
+        get { return _buildAAB; }
+        set { _buildAAB = value; }
+    }
 
     [MenuItem("Tools/ExportAPK")]
     public static void ExportAPK()
@@ -38,7 +45,7 @@ public class ProjectExportApk : Editor
         PlayerSettings.Android.bundleVersionCode = 2;
         PlayerSettings.Android.useAPKExpansionFiles = false;
 
-        EditorUserBuildSettings.buildAppBundle = false;
+        EditorUserBuildSettings.buildAppBundle = BuildAAB;
         // 生成符号文件
         EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Public;
         EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
@@ -81,6 +88,23 @@ public class ProjectExportApk : Editor
         string apkPath = Path.Combine(apkDirectory, apkName);
         Debug.Log("apkPath:" + apkPath);
         BuildPipeline.BuildPlayer(levels.ToArray(), apkPath, BuildTarget.Android, options);
+    }
+
+    public static void ExportApkAndAAB()
+    {
+        BuildAAB = true;
+        ExportAPK();
+        if (!EditorUserBuildSettings.buildAppBundle)
+        {
+            return;
+        }
+
+        string workspacePath = WorkSpacePath();
+        string apkDirectory = GetApkDirectory(workspacePath);
+        var buildPlayerOptions = AndroidBuildHelper.CreateBuildPlayerOptions($"{apkDirectory}/googleplay.aab");
+        var assetPackConfig = new AssetPackConfig();
+        assetPackConfig.SplitBaseModuleAssets = true;
+        Google.Android.AppBundle.Editor.Internal.AppBundlePublisher.Build(buildPlayerOptions, assetPackConfig, false);
     }
 
     public static string WorkSpacePath()
