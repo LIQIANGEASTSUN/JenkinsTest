@@ -4,7 +4,7 @@ fileUrl="AAAAAA"
 pipeline {
     //agent any
 	agent {
-	
+	    any
 	}
 	
 	// 全局变量
