@@ -8,12 +8,7 @@ public class ProjectExportApk : Editor
 {
 
     private static BuildOptions s_BuildOptions = BuildOptions.CompressWithLz4HC;
-    private static bool _buildAAB = false;
-    private static bool BuildAAB
-    {
-        get { return _buildAAB; }
-        set { _buildAAB = value; }
-    }
+
 
     [MenuItem("Tools/ExportAPK")]
     public static void ExportAPK()
@@ -29,11 +24,16 @@ public class ProjectExportApk : Editor
         }
 
         Debug.Log("ExportApk Switch Android success");
-        string workspacePath = WorkSpacePath();
+        string exportPath = WorkExportPath();
+        if (Directory.Exists(exportPath))
+        {
+            Directory.Delete(exportPath, true);
+        }
+        Directory.CreateDirectory(exportPath);
 
         PlayerSettings.applicationIdentifier = "com.DeCompany.Project";
 
-        string keystorePath = GetKeyStorePath(workspacePath);
+        string keystorePath = GetKeyStorePath();
         Debug.Log("keystorePath:" + keystorePath);
         // 配置 keystore 信息
         PlayerSettings.Android.keystoreName = keystorePath;
@@ -45,7 +45,7 @@ public class ProjectExportApk : Editor
         PlayerSettings.Android.bundleVersionCode = 2;
         PlayerSettings.Android.useAPKExpansionFiles = false;
 
-        EditorUserBuildSettings.buildAppBundle = BuildAAB;
+        EditorUserBuildSettings.buildAppBundle = EnvironmentUtil.GetBool("BUILD_AAB", false);
         // 生成符号文件
         EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Public;
         EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
@@ -77,54 +77,44 @@ public class ProjectExportApk : Editor
             levels.Add(scene.path);
         }
 
-        string apkDirectory = GetApkDirectory(workspacePath);
-        Debug.Log("apkDirectory:" + apkDirectory);
-        if (Directory.Exists(apkDirectory))
-        {
-            Directory.Delete(apkDirectory);
-        }
-        Directory.CreateDirectory(apkDirectory);
-        string apkName = EnvironmentUtil.GetString("APK_NAME", "product.apk");
-        string apkPath = Path.Combine(apkDirectory, apkName);
+        string apkPath = GetApkPath();
         Debug.Log("apkPath:" + apkPath);
         BuildPipeline.BuildPlayer(levels.ToArray(), apkPath, BuildTarget.Android, options);
     }
 
     public static void ExportApkAndAAB()
     {
-        BuildAAB = true;
         ExportAPK();
         if (!EditorUserBuildSettings.buildAppBundle)
         {
             return;
         }
 
-        string workspacePath = WorkSpacePath();
-        string apkDirectory = GetApkDirectory(workspacePath);
-        var buildPlayerOptions = AndroidBuildHelper.CreateBuildPlayerOptions($"{apkDirectory}/googleplay.aab");
+        string aabPath = GetAABPath();
+        var buildPlayerOptions = AndroidBuildHelper.CreateBuildPlayerOptions(aabPath);
         var assetPackConfig = new AssetPackConfig();
         assetPackConfig.SplitBaseModuleAssets = true;
         Google.Android.AppBundle.Editor.Internal.AppBundlePublisher.Build(buildPlayerOptions, assetPackConfig, false);
     }
 
-    public static string WorkSpacePath()
+    public static string WorkExportPath()
     {
-        string path = Application.dataPath;
-        path = Path.GetDirectoryName(path);
-        path = Path.GetDirectoryName(path);
-        return path;
+        return EnvironmentUtil.GetString("EXPORT_PATH", Application.dataPath);
     }
 
-    private static string GetKeyStorePath(string workspacePath)
+    private static string GetKeyStorePath()
     {
-        string keystorePath = Path.Combine(workspacePath, "Keystore", "user.keystore");
-        return keystorePath;
+        return EnvironmentUtil.GetString("KEY_STORE_PATH", string.Empty);
     }
 
-    private static string GetApkDirectory(string workspacePath)
+    private static string GetApkPath()
     {
-        string apkPath = Path.Combine(workspacePath, "Export");
-        return apkPath;
+        return EnvironmentUtil.GetString("EXPORT_APK_PATH", "output.apk");
+    }
+
+    private static string GetAABPath()
+    {
+        return EnvironmentUtil.GetString("GOOGLE_PLAY_AAB_PATH", "googleplay.aab");
     }
 
 }

@@ -1,0 +1,16 @@
+
+
+http://10.0.179.83:8080/
+
+
+
+Play Asset Delivery (PAD) 是针对Android App Bundle (AAB) 发布格式的资产拆分解决方案
+
+
+        if (EditorUserBuildSettings.buildAppBundle)
+        {
+            var buildPlayerOptions = Google.Android.AppBundle.Editor.AndroidBuildHelper.CreateBuildPlayerOptions($"{pckPath}/googleplay.aab");
+            var assetPackConfig = new Google.Android.AppBundle.Editor.AssetPackConfig();
+            assetPackConfig.SplitBaseModuleAssets = true;
+            Google.Android.AppBundle.Editor.Internal.AppBundlePublisher.Build(buildPlayerOptions, assetPackConfig, false);
+        }

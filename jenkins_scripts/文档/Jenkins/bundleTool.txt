@@ -1,0 +1,40 @@
+
+
+https://developer.android.com/tools/bundletool?hl=zh-cn
+
+
+本部分将介绍如何使用 bundletool 在本地测试 app bundle。
+当 bundletool 从 app bundle 生成 APK 后，它会将生成的 APK 纳入到一个名为“APK set archive”的容器中，该容器以 .apks 作为文件扩展名。
+如需从 app bundle 为应用支持的所有设备配置生成一组 APK，请使用 bundletool build-apks 命令，如下所示：
+
+
+bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
+如果要将这些 APK 部署到设备，您还需要添加应用的签名信息，如以下命令所示。
+如果您未指定签名信息，bundletool 会尝试使用调试密钥为 APK 签名。
+
+
+bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
+--ks=/MyApp/keystore.jks
+--ks-pass=file:/MyApp/keystore.pwd
+--ks-key-alias=MyKeyAlias
+--key-pass=file:/MyApp/key.pwd
+
+
+
+手动创建设备规范 JSON
+如果您无法访问要构建目标 APK 集的设备（例如，您想通过自己手头没有的设备试试应用），则可以手动创建采用以下格式的 JSON 文件：
+{
+  "supportedAbis": ["arm64-v8a", "armeabi-v7a"],
+  "supportedLocales": ["en", "fr"],
+  "screenDensity": 640,
+  "sdkVersion": 27
+}
+然后，您可以将此 JSON 传递给 bundle extract-apks 命令，如上一部分中所述。
+
+从现有的 APK 集中提取设备专用 APK
+如果您已有一个 APK 集，并且想要从中提取出一部分针对特定设备配置的 APK，则可以使用 extract-apks 命令并指定设备规范 JSON，如下所示：
+
+bundletool extract-apks
+--apks=/MyApp/my_existing_APK_set.apks
+--output-dir=/MyApp/my_pixel2_APK_set.apks
+--device-spec=/MyApp/bundletool/pixel2.json
