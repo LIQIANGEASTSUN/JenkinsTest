@@ -3,11 +3,12 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-public class ProjectExportApk
+public class ProjectExportApk : Editor
 {
 
     protected static BuildOptions s_BuildOptions = BuildOptions.CompressWithLz4HC;
 
+    [MenuItem("Tools/ExportAPK")]
     public static void ExportAPK()
     {
         Debug.Log("ExportApk ExportAPK start");
@@ -20,10 +21,13 @@ public class ProjectExportApk
         }
 
         Debug.Log("ExportApk Switch Android success");
+        string workspacePath = WorkSpacePath();
 
         PlayerSettings.applicationIdentifier = "com.DeCompany.Project";
 
-        PlayerSettings.Android.keystoreName = GetKeyStorePath();
+        string keystorePath = GetKeyStorePath(workspacePath);
+        Debug.Log("keystorePath:" + keystorePath);
+        PlayerSettings.Android.keystoreName = keystorePath;
         PlayerSettings.Android.keystorePass = "123456";
         PlayerSettings.Android.keyaliasName = "testapk";
         PlayerSettings.Android.keyaliasPass = "123456";
@@ -35,14 +39,6 @@ public class ProjectExportApk
 
         EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Public;
         EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
-
-        string apkDirectory = GetApkDirectory();
-        if (Directory.Exists(apkDirectory))
-        {
-            Directory.Delete(apkDirectory);
-        }
-        Directory.CreateDirectory(apkDirectory);
-        Debug.LogError("apkDirectory:" + apkDirectory);
 
         var options = s_BuildOptions;
         bool connectProfiler = false;
@@ -70,20 +66,35 @@ public class ProjectExportApk
             levels.Add(scene.path);
         }
 
+        string apkDirectory = GetApkDirectory(workspacePath);
+        Debug.Log("apkDirectory:" + apkDirectory);
+        if (Directory.Exists(apkDirectory))
+        {
+            Directory.Delete(apkDirectory);
+        }
+        Directory.CreateDirectory(apkDirectory);
         string apkPath = Path.Combine(apkDirectory, "test.apk");
-        Debug.LogError("apkPath:" + apkPath);
+        Debug.Log("apkPath:" + apkPath);
         BuildPipeline.BuildPlayer(levels.ToArray(), apkPath, BuildTarget.Android, options);
     }
 
-    private static string GetKeyStorePath()
+    public static string WorkSpacePath()
     {
-        string keystorePath = Path.Combine(Application.dataPath, "Keystore", "user.keystore");
+        string path = Application.dataPath;
+        path = Path.GetDirectoryName(path);
+        path = Path.GetDirectoryName(path);
+        return path;
+    }
+
+    private static string GetKeyStorePath(string workspacePath)
+    {
+        string keystorePath = Path.Combine(workspacePath, "Keystore", "user.keystore");
         return keystorePath;
     }
 
-    private static string GetApkDirectory()
+    private static string GetApkDirectory(string workspacePath)
     {
-        string apkPath = Path.Combine(Application.dataPath, "Export");
+        string apkPath = Path.Combine(workspacePath, "Export");
         return apkPath;
     }
 
