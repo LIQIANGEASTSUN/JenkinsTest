@@ -1,0 +1,18 @@
+
+// Android Master 打包 apk
+pipeline {
+    agent any
+	
+    stages {
+        stage('Test Parameter') {
+            steps {
+                script {
+				    // shell 脚本目录
+					ANDROID_MASTER_SHELL_PATH="${env.WORKSPACE}/shell/android_master.sh"
+					// 给 shell 脚本添加权限并执行
+					sh "chmod +x ${ANDROID_MASTER_SHELL_PATH} && ${ANDROID_MASTER_SHELL_PATH}"
+                }
+            }
+        }
+    }
+}

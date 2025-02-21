@@ -13,6 +13,7 @@ public class ProjectExportApk : Editor
     {
         Debug.Log("ExportApk ExportAPK start");
 
+        // 切换平台到 Android 分支
         bool switchAndroid = EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
         if (!switchAndroid)
         {
@@ -27,20 +28,23 @@ public class ProjectExportApk : Editor
 
         string keystorePath = GetKeyStorePath(workspacePath);
         Debug.Log("keystorePath:" + keystorePath);
+        // 配置 keystore 信息
         PlayerSettings.Android.keystoreName = keystorePath;
         PlayerSettings.Android.keystorePass = "123456";
         PlayerSettings.Android.keyaliasName = "testapk";
         PlayerSettings.Android.keyaliasPass = "123456";
         PlayerSettings.Android.useCustomKeystore = true;
+
         PlayerSettings.Android.bundleVersionCode = 2;
-
         PlayerSettings.Android.useAPKExpansionFiles = false;
-        EditorUserBuildSettings.buildAppBundle = false;
 
+        EditorUserBuildSettings.buildAppBundle = false;
+        // 生成符号文件
         EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Public;
         EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
 
         var options = s_BuildOptions;
+        // 是否连接 profiler
         bool connectProfiler = false;
         if (connectProfiler)
         {
@@ -73,7 +77,8 @@ public class ProjectExportApk : Editor
             Directory.Delete(apkDirectory);
         }
         Directory.CreateDirectory(apkDirectory);
-        string apkPath = Path.Combine(apkDirectory, "test.apk");
+        string apkName = EnvironmentUtil.GetString("APK_NAME", "product.apk");
+        string apkPath = Path.Combine(apkDirectory, apkName);
         Debug.Log("apkPath:" + apkPath);
         BuildPipeline.BuildPlayer(levels.ToArray(), apkPath, BuildTarget.Android, options);
     }
