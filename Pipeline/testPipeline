@@ -4,8 +4,8 @@ fileUrl="AAAAAA"
 pipeline {
     agent any
 	//agent {
-	    //label 'Mac'
-		//customWorkspace '/Users/liqiang/.jenkins/workspace/Test/TestProject2' // 设置自定义工作空间路径
+	    label 'Mac'
+		customWorkspace '/Users/liqiang/.jenkins/workspace/Test/TestProject2' // 设置自定义工作空间路径
 	//}
 	
 	options {
@@ -19,9 +19,9 @@ pipeline {
     stages {
 		stage('Checkout') {
 			steps {
-                properties([
-                    [$class: 'CustomWorkspace', workspace: '/desired/path/to/workspace']
-                ])
+                //properties([
+                    //[$class: 'CustomWorkspace', workspace: '/desired/path/to/workspace']
+                //])
                 checkout scm
             }
         }
