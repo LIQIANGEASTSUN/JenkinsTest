@@ -5,7 +5,7 @@ pipeline {
     //agent any
 	agent {
 	    label 'Mac'
-		customWorkspace '/Users/liqiang/.jenkins/workspace/Test/TestProject2' // 设置自定义工作空间路径
+		//customWorkspace '/Users/liqiang/.jenkins/workspace/Test/TestProject2' // 设置自定义工作空间路径
 	}
 	
 	// 全局变量
