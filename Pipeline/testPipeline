@@ -5,6 +5,7 @@ pipeline {
     //agent any
 	agent {
 	    label 'Mac'
+		customWorkspace '/Users/liqiang/.jenkins/workspace/Test/TestProject2' // 设置自定义工作空间路径
 	}
 	
 	// 全局变量
@@ -12,6 +13,13 @@ pipeline {
 		Name = "ABC"
 	}
     stages {
+		stage('Checkout') {
+            steps {
+                // Git checkout 会在自定义工作空间中执行
+                checkout scm // 使用 SCM 的配置
+            }
+        }
+		
         stage('Print WorkSpace') {
             steps {
                 script {
