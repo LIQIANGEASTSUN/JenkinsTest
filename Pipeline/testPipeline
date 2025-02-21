@@ -16,18 +16,12 @@ pipeline {
 		Name = "ABC"
 	}
     stages {
-	    stage('Prepare Workspace') {
+	    stage('Checkout') {
             steps {
                 dir('/Users/liqiang/.jenkins/workspace/Test/TestProject2') {
                     // 在自定义工作区内进行后续步骤
-                    sh 'echo "Running in custom workspace..."'
+                    checkout scm
                 }
-            }
-        }
-	
-		stage('Checkout') {
-			steps {
-                checkout scm
             }
         }
 		
