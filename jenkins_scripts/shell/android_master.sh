@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 #!/bin/bash
@@ -9,21 +8,34 @@ echo "WORKSPACE=${WORKSPACE}"
 
 # Unity 安装目录
 UNITY_PATH=/Applications/Unity/Hub/Editor/2022.3.26f1/Unity.app/Contents/MacOS/Unity
-
 # Unity 项目目录 Assets、Library、ProjectSettings 文件夹在 PROJECT_PATH 路径下
 PROJECT_PATH="${WORKSPACE}/Project"
-echo "PROJECT_PATH=${PROJECT_PATH}"
 
-# 通过 export 将变量导出给 Unity 使用
+# 通过 export 将变量标记为环境变量，并传递给 Unity 使用
 # 导出到 Unity 后都是 字符串
 # 在 Unity 中通过 string value = Environment.GetEnvironmentVariable(key); 获取
 # bool 类型的传递过去是字符串 "true" 和 "false"
-
-# 拼接 apk 名字，并传递给 Unity 环境变量
+export WORKSPACE_PATH="${WORKSPACE}"
+export EXPORT_PATH="${WORKSPACE}/Export"
+export KEY_STORE_PATH="${WORKSPACE}/jenkins_scripts/Tools/user.keystore"
 # 生成的 apk 名字
-export APK_NAME="${JOB_BASE_NAME}_${BUILD_ID}_${BRANCH_NAME:18}.apk"
+export APK_NAME="${JOB_BASE_NAME}_${BUILD_ID}_${BRANCH_NAME}.apk"
+# 生成的 apk 路径
+export EXPORT_APK_PATH="${EXPORT_PATH}/${APK_NAME}"
 # 生成 .aab 文件
-export BUILD_AAB="false"
+export BUILD_AAB="false"    
+
+echo "UNITY_PATH=${UNITY_PATH}"
+echo "PROJECT_PATH=${PROJECT_PATH}"
+echo "BUNDLE_TOOL_PATH=${BUNDLE_TOOL_PATH}"
+echo "APK_NAME=${APK_NAME}"
+echo "EXPORT_APK_PATH=${EXPORT_APK_PATH}"
+echo "BUILD_AAB=${BUILD_AAB}"
+echo "GOOGLE_PLAY_AAB_PATH=${GOOGLE_PLAY_AAB_PATH}"
+echo "OUT_PUT_APKS_PATH_1=${OUT_PUT_APKS_PATH_1}"
+echo "OUT_PUT_APKS_PATH_2=${OUT_PUT_APKS_PATH_2}"
+echo "SAMSUNG_S9_PATH=${SAMSUNG_S9_PATH}"
+
 
 # 下面是调用 Unity 的命令
 # 在 Assets 文件夹下任意目录 创建文件夹 Editor
