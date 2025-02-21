@@ -31,7 +31,7 @@ export MY_PARAM_5=false
 # 下面命令通过 PojectExport.Export 调用
 $UNITY_PATH -projectPath $PROJECT_PATH \
 -buildTarget android \
--executeMethod PojectExport.Export \
+-executeMethod ProjectExportApk.ExportAPK \
 -logfile - \
 -batchMode -quit \
 -GMMode 

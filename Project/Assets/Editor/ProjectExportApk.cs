@@ -10,6 +10,8 @@ public class ProjectExportApk
 
     public static void ExportAPK()
     {
+        Debug.Log("ExportApk ExportAPK start");
+
         bool switchAndroid = EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
         if (!switchAndroid)
         {
