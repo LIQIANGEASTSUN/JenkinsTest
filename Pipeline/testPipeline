@@ -2,11 +2,15 @@
 fileUrl="AAAAAA"
 
 pipeline {
-    //agent any
-	agent {
-	    label 'Mac'
+    agent any
+	//agent {
+	    //label 'Mac'
 		//customWorkspace '/Users/liqiang/.jenkins/workspace/Test/TestProject2' // 设置自定义工作空间路径
-	}
+	//}
+	
+	options {
+        disableConcurrentBuilds()
+    }
 	
 	// 全局变量
 	environment {
@@ -14,9 +18,11 @@ pipeline {
 	}
     stages {
 		stage('Checkout') {
-            steps {
-                // Git checkout 会在自定义工作空间中执行
-                checkout scm // 使用 SCM 的配置
+			steps {
+                properties([
+                    [$class: 'CustomWorkspace', workspace: '/desired/path/to/workspace']
+                ])
+                checkout scm
             }
         }
 		
