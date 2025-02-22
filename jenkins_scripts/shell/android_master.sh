@@ -16,6 +16,7 @@ PROJECT_PATH="${WORKSPACE}/Project"
 # 在 Unity 中通过 string value = Environment.GetEnvironmentVariable(key); 获取
 # bool 类型的传递过去是字符串 "true" 和 "false"
 export WORKSPACE_PATH="${WORKSPACE}"
+# 生成文件保存目录，也通过 export 传递给 Unity
 export EXPORT_PATH="${WORKSPACE}/Export"
 export KEY_STORE_PATH="${WORKSPACE}/jenkins_scripts/Tools/user.keystore"
 # 生成的 apk 名字
@@ -34,9 +35,9 @@ echo "BUILD_AAB=${BUILD_AAB}"
 
 # 下面是调用 Unity 的命令
 # 在 Assets 文件夹下任意目录 创建文件夹 Editor
-# 新建 PojectExport.cs  删除继承 MonoBehaviour   
-# 添加一个 public static void Export() 方法
-# 下面命令通过 PojectExport.Export 调用
+# 新建 ProjectExportApk.cs  删除继承 MonoBehaviour   
+# 添加一个 public static void ExportAPK() 方法
+# 下面命令通过 ProjectExportApk.ExportAPK 调用
 $UNITY_PATH -projectPath $PROJECT_PATH \
 -buildTarget android \
 -executeMethod ProjectExportApk.ExportAPK \
