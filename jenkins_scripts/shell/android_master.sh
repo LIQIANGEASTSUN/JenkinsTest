@@ -17,7 +17,7 @@ PROJECT_PATH="${WORKSPACE}/Project"
 # bool 类型的传递过去是字符串 "true" 和 "false"
 export WORKSPACE_PATH="${WORKSPACE}"
 # 生成文件保存目录，也通过 export 传递给 Unity
-export EXPORT_PATH="${WORKSPACE}/Export"
+export EXPORT_PATH="${WORKSPACE}/Export/Android"
 export KEY_STORE_PATH="${WORKSPACE}/jenkins_scripts/Tools/user.keystore"
 # 生成的 apk 名字
 export APK_NAME="${JOB_BASE_NAME}_${BUILD_ID}.apk"

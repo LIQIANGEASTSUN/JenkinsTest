@@ -20,7 +20,7 @@ public class ProjectExportApk : Editor
         rootPath = Path.GetDirectoryName(rootPath);
 
         string keystorePath = Path.Combine(rootPath, "jenkins_scripts", "Tools", "user.keystore");
-        string exportPath = Path.Combine(rootPath, "Export");
+        string exportPath = Path.Combine(rootPath, "Export/Android");
         string exportApkPath = Path.Combine(exportPath, "test.apk");
         string exportAABPath = Path.Combine(exportPath, "googleplay.aab");
 

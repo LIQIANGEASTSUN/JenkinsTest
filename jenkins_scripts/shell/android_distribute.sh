@@ -18,7 +18,7 @@ BUNDLE_TOOL_PATH="${WORKSPACE}/jenkins_scripts/Tools/bundletool-all-1.18.0.jar"
 # 在 Unity 中通过 string value = Environment.GetEnvironmentVariable(key); 获取
 # bool 类型的传递过去是字符串 "true" 和 "false"
 export WORKSPACE_PATH="${WORKSPACE}"
-export EXPORT_PATH="${WORKSPACE}/Export"
+export EXPORT_PATH="${WORKSPACE}/Export/Android"
 export KEY_STORE_PATH="${WORKSPACE}/jenkins_scripts/Tools/user.keystore"
 # 生成的 apk 名字
 export APK_NAME="${JOB_BASE_NAME}_${BUILD_ID}_${BRANCH_NAME:18}.apk"
