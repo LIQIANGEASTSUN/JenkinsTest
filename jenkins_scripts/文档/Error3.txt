@@ -1,0 +1,147 @@
+
+CommandInvokationFailure: Gradle build failed. 
+D:\A_Unity\2022.3.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\OpenJDK\bin\java.exe -classpath "D:\A_Unity\2022.3.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\gradle\lib\gradle-launcher-7.2.jar" org.gradle.launcher.GradleMain "-Dorg.gradle.jvmargs=-Xmx4096m" "assembleRelease"
+
+Environment Variables:
+GOOGLE_PLAY_AAB_PATH = E:\JenkinsTest\Export\googleplay.aab
+USERDOMAIN = LAPTOP-8EMU05SF
+MOZ_PLUGIN_PATH = D:\A_福昕\FOXIT PDF READER\plugins\
+TMP = C:\Users\19039\AppData\Local\Temp
+PROCESSOR_REVISION = 9e0a
+OS = Windows_NT
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_25784_SXHVPOWAOVDHZATX
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+ProgramW6432 = C:\Program Files
+LUA_DEV = D:\A_LuaForWindows_v5.1.5-52\5.1
+JAVA_TOOL_OPTIONS = -Dfile.encoding=UTF-8
+USERPROFILE = C:\Users\19039
+JAVA_HOME = D:\A_Unity\2022.3.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\OpenJDK
+CommonProgramFiles = C:\Program Files\Common Files
+DriverData = C:\Windows\System32\Drivers\DriverData
+ComSpec = C:\WINDOWS\system32\cmd.exe
+PSModulePath = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+ANDROID_NDK_ROOT = D:\A_Unity\2022.3.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\NDK
+SystemRoot = C:\WINDOWS
+RABBITMQ_HOME = C:\Program Files\RabbitMQ Server\rabbitmq_server-4.0.4
+ERLANG_HOME = D:\Erlang_OTP_27.1.2\Erlang OTP
+NUMBER_OF_PROCESSORS = 12
+ProgramFiles = C:\Program Files
+EFC_22672 = 1
+EXPORT_PATH = E:\JenkinsTest\Export
+SHIM_MCCOMPAT = 0x810000001
+LUA_PATH = ;;D:\A_LuaForWindows_v5.1.5-52\5.1\lua\?.luac
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+TEMP = C:\Users\19039\AppData\Local\Temp
+Path = C:\Program Files\PlasticSCM5\server;C:\Program Files\PlasticSCM5\client;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;D:\A_Git\Git\Git\cmd;D:\A_SVN\bin;D:\A_JDK\JDK\bin;D:\A_JDK\JDK\jre\bin;D:\A_tortoiseGit\bin;D:\A_Python3.10.8_x64;D:\A_LuaForWindows_v5.1.5-52\5.1;D:\A_LuaForWindows_v5.1.5-52\5.1\clibs;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Erlang_OTP_27.1.2\Erlang OTP\bin;C:\Program Files\RabbitMQ Server\rabbitmq_server-4.0.4\sbin;D:\A_JDK\JRE\bin;D:\MinGW\bin;C:\Users\19039\AppData\Local\Microsoft\WindowsApps;C:\Users\19039\.dotnet\tools;D:\A_VSCode1.72.2\Microsoft VS Code\bin;
+KEY_STORE_PATH = E:\JenkinsTest\jenkins_scripts\Tools\user.keystore
+USERNAME = Self12321
+COMPUTERNAME = LAPTOP-8EMU05SF
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.wlua;.lexe
+ALLUSERSPROFILE = C:\ProgramData
+SystemDrive = C:
+windir = C:\WINDOWS
+PROCESSOR_ARCHITECTURE = AMD64
+FPS_BROWSER_USER_PROFILE_STRING = Default
+EXPORT_APK_PATH = E:\JenkinsTest\Export\test.apk
+PUBLIC = C:\Users\Public
+CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+APPDATA = C:\Users\19039\AppData\Roaming
+OneDrive = C:\Users\19039\OneDrive
+PROCESSOR_LEVEL = 6
+CommonProgramW6432 = C:\Program Files\Common Files
+ProgramFiles(x86) = C:\Program Files (x86)
+NVIDIAWHITELISTED = 0x01
+SESSIONNAME = Console
+LOGONSERVER = \\LAPTOP-8EMU05SF
+LOCALAPPDATA = C:\Users\19039\AppData\Local
+configsetroot = C:\WINDOWS\ConfigSetRoot
+HOMEPATH = \Users\19039
+HOMEDRIVE = C:
+USERDOMAIN_ROAMINGPROFILE = LAPTOP-8EMU05SF
+ProgramData = C:\ProgramData
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+
+
+stderr[
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+ERROR:D:\A_Unity\2022.3.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\platforms\android-35\android.jar: D8: java.lang.NullPointerException
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':launcher:desugarReleaseFileDependencies'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.DexFileDependenciesTask$DexFileDependenciesWorkerAction
+   > Error while dexing.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 1s
+]
+stdout[
+WARNING:We recommend using a newer Android Gradle plugin to use compileSdk = 35
+
+This Android Gradle plugin (7.1.2) was tested up to compileSdk = 32
+
+This warning can be suppressed by adding
+    android.suppressUnsupportedCompileSdk=35
+to this project's gradle.properties
+
+The build will continue, but you are strongly encouraged to update your project to
+use a newer Android Gradle Plugin that has been tested with compileSdk = 35
+> Task :launcher:preBuild UP-TO-DATE
+> Task :unityLibrary:preBuild UP-TO-DATE
+> Task :launcher:preReleaseBuild UP-TO-DATE
+> Task :unityLibrary:preReleaseBuild UP-TO-DATE
+> Task :unityLibrary:compileReleaseAidl NO-SOURCE
+> Task :launcher:generateReleaseBuildConfig UP-TO-DATE
+> Task :unityLibrary:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :launcher:compileReleaseAidl NO-SOURCE
+> Task :launcher:javaPreCompileRelease UP-TO-DATE
+> Task :unityLibrary:mergeReleaseNativeLibs UP-TO-DATE
+> Task :launcher:generateReleaseResValues UP-TO-DATE
+> Task :launcher:createReleaseCompatibleScreenManifests UP-TO-DATE
+> Task :unityLibrary:stripReleaseDebugSymbols UP-TO-DATE
+> Task :launcher:extractDeepLinksRelease UP-TO-DATE
+> Task :launcher:extractProguardFiles UP-TO-DATE
+> Task :unityLibrary:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :unityLibrary:compileReleaseRenderscript NO-SOURCE
+> Task :launcher:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :unityLibrary:generateReleaseBuildConfig UP-TO-DATE
+> Task :unityLibrary:generateReleaseResValues UP-TO-DATE
+> Task :unityLibrary:generateReleaseResources UP-TO-DATE
+> Task :unityLibrary:packageReleaseResources UP-TO-DATE
+> Task :launcher:checkReleaseDuplicateClasses UP-TO-DATE
+> Task :unityLibrary:parseReleaseLocalResources UP-TO-DATE
+> Task :unityLibrary:processReleaseManifest UP-TO-DATE
+> Task :launcher:mergeReleaseShaders UP-TO-DATE
+> Task :launcher:compileReleaseShaders NO-SOURCE
+> Task :launcher:generateReleaseAssets UP-TO-DATE
+> Task :launcher:processReleaseJavaRes NO-SOURCE
+> Task :launcher:collectReleaseDependencies UP-TO-DATE
+> Task :launcher:sdkReleaseDependencyData UP-TO-DATE
+> Task :unityLibrary:generateReleaseRFile UP-TO-DATE
+> Task :launcher:validateSigningRelease
+> Task :launcher:writeReleaseAppMetadata
+
+> Task :launcher:desugarReleaseFileDependencies FAILED
+
+> Task :launcher:writeReleaseSigningConfigVersions
+> Task :unityLibrary:extractReleaseAnnotations UP-TO-DATE
+26 actionable tasks: 4 executed, 22 up-to-date
+]
+exit code: 1
+UnityEditor.Android.Command.WaitForProgramToRun (UnityEditor.Utils.Program p, UnityEditor.Android.Command+WaitingForProcessToExit waitingForProcessToExit, System.String errorMsg) (at <a799942dddd64d7ab0ff69991e14bcf8>:0)
+UnityEditor.Android.Command.Run (System.Diagnostics.ProcessStartInfo psi, UnityEditor.Android.Command+WaitingForProcessToExit waitingForProcessToExit, System.String errorMsg) (at <a799942dddd64d7ab0ff69991e14bcf8>:0)
+UnityEditor.Android.Command.Run (System.String command, System.String args, System.String workingdir, UnityEditor.Android.Command+WaitingForProcessToExit waitingForProcessToExit, System.String errorMsg) (at <a799942dddd64d7ab0ff69991e14bcf8>:0)
+UnityEditor.Android.AndroidJavaTools.RunJava (System.String args, System.String workingdir, System.Action`1[T] progress, System.String error) (at <a799942dddd64d7ab0ff69991e14bcf8>:0)
+UnityEditor.Android.GradleWrapper.Run (UnityEditor.Android.AndroidJavaTools javaTools, Unity.Android.Gradle.AndroidGradle androidGradle, System.String workingdir, System.String task, System.Action`1[T] progress) (at <a799942dddd64d7ab0ff69991e14bcf8>:0)
+Rethrow as GradleInvokationException: Gradle build failed
+UnityEditor.Android.GradleWrapper.Run (UnityEditor.Android.AndroidJavaTools javaTools, Unity.Android.Gradle.AndroidGradle androidGradle, System.String workingdir, System.String task, System.Action`1[T] progress) (at <a799942dddd64d7ab0ff69991e14bcf8>:0)
+UnityEditor.Android.PostProcessor.Tasks.BuildGradleProject.Execute (UnityEditor.Android.PostProcessor.PostProcessorContext context) (at <a799942dddd64d7ab0ff69991e14bcf8>:0)
+UnityEditor.Android.PostProcessor.PostProcessRunner.RunAllTasks (UnityEditor.Android.PostProcessor.PostProcessorContext context) (at <a799942dddd64d7ab0ff69991e14bcf8>:0)
+UnityEditor.BuildPipeline:BuildPlayer(String[], String, BuildTarget, BuildOptions)
+ProjectExportApk:ExportAPK() (at Assets/Editor/ProjectExportApk.cs:111)
+ProjectExportApk:ExportAPKManual() (at Assets/Editor/ProjectExportApk.cs:40)

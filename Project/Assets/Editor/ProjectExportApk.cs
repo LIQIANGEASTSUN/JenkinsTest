@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 using System.IO;
 using Google.Android.AppBundle.Editor;
 
@@ -9,8 +10,55 @@ public class ProjectExportApk : Editor
 
     private static BuildOptions s_BuildOptions = BuildOptions.CompressWithLz4HC;
 
+    /// <summary>
+    /// 手动打包时设置环境变量
+    /// </summary>
+    private static void ManualExportEnvironment()
+    {
+        string rootPath = Application.dataPath;
+        rootPath = Path.GetDirectoryName(rootPath);
+        rootPath = Path.GetDirectoryName(rootPath);
 
+        string keystorePath = Path.Combine(rootPath, "jenkins_scripts", "Tools", "user.keystore");
+        string exportPath = Path.Combine(rootPath, "Export");
+        string exportApkPath = Path.Combine(exportPath, "test.apk");
+        string exportAABPath = Path.Combine(exportPath, "googleplay.aab");
+
+        Environment.SetEnvironmentVariable("KEY_STORE_PATH", keystorePath);
+        Environment.SetEnvironmentVariable("EXPORT_PATH", exportPath);
+        Environment.SetEnvironmentVariable("EXPORT_APK_PATH", exportApkPath);
+        Environment.SetEnvironmentVariable("GOOGLE_PLAY_AAB_PATH", exportAABPath);
+    }
+
+    private static void ManualExportAPKSpecial()
+    {
+        Environment.SetEnvironmentVariable("BUILD_AAB", "false");
+    }
+
+    private static void ManualExportAABSpecial()
+    {
+        Environment.SetEnvironmentVariable("BUILD_AAB", "true");
+    }
+
+    /// <summary>
+    /// 添加一个测试打包的方法
+    /// </summary>
     [MenuItem("Tools/ExportAPK")]
+    private static void ExportAPKManual()
+    {
+        ManualExportEnvironment();
+        ManualExportAPKSpecial();
+        ExportAPK();
+    }
+
+    [MenuItem("Tools/ExportAAB")]
+    private static void ExportAABManual()
+    {
+        ManualExportEnvironment();
+        ManualExportAABSpecial();
+        ExportApkAndAAB();
+    }
+
     public static void ExportAPK()
     {
         Debug.Log("ExportApk ExportAPK start");
@@ -89,6 +137,8 @@ public class ProjectExportApk : Editor
         {
             return;
         }
+
+        Debug.Log("Start Export aab");
 
         string aabPath = GetAABPath();
         var buildPlayerOptions = AndroidBuildHelper.CreateBuildPlayerOptions(aabPath);

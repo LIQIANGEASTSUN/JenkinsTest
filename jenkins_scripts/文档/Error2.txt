@@ -1,0 +1,21 @@
+
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+ERROR:D:\A_Unity\2022.3.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\platforms\android-35\android.jar: D8: java.lang.NullPointerException
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':launcher:desugarReleaseFileDependencies'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.DexFileDependenciesTask$DexFileDependenciesWorkerAction
+   > Error while dexing.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 1s
+
+UnityEditor.BuildPipeline:BuildPlayer (string[],string,UnityEditor.BuildTarget,UnityEditor.BuildOptions)
+ProjectExportApk:ExportAPK () (at Assets/Editor/ProjectExportApk.cs:111)
+ProjectExportApk:ExportAPKManual () (at Assets/Editor/ProjectExportApk.cs:40)
