@@ -30,11 +30,17 @@ public class ProjectExportApk : Editor
         Environment.SetEnvironmentVariable("GOOGLE_PLAY_AAB_PATH", exportAABPath);
     }
 
+    /// <summary>
+    /// 手动打包时设置环境变量
+    /// </summary>
     private static void ManualExportAPKSpecial()
     {
         Environment.SetEnvironmentVariable("BUILD_AAB", "false");
     }
 
+    /// <summary>
+    /// 手动打包时设置环境变量
+    /// </summary>
     private static void ManualExportAABSpecial()
     {
         Environment.SetEnvironmentVariable("BUILD_AAB", "true");
@@ -51,6 +57,9 @@ public class ProjectExportApk : Editor
         ExportAPK();
     }
 
+    /// <summary>
+    /// 添加一个测试打包的方法
+    /// </summary>
     [MenuItem("Tools/ExportAAB")]
     private static void ExportAABManual()
     {
