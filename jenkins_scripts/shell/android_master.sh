@@ -20,7 +20,7 @@ export WORKSPACE_PATH="${WORKSPACE}"
 export EXPORT_PATH="${WORKSPACE}/Export"
 export KEY_STORE_PATH="${WORKSPACE}/jenkins_scripts/Tools/user.keystore"
 # 生成的 apk 名字
-export APK_NAME="${JOB_BASE_NAME}_${BUILD_ID}_${BRANCH_NAME}.apk"
+export APK_NAME="${JOB_BASE_NAME}_${BUILD_ID}.apk"
 # 生成的 apk 路径
 export EXPORT_APK_PATH="${EXPORT_PATH}/${APK_NAME}"
 # 生成 .aab 文件
