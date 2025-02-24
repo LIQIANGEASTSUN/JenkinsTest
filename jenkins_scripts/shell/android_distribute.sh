@@ -29,9 +29,9 @@ export BUILD_AAB="true"
 # aab 生成路径
 export GOOGLE_PLAY_AAB_PATH="${EXPORT_PATH}/googlePlay.aab"
 # build-apks 命令从aab 生成的 apk 组路径
-OUT_PUT_APKS_PATH_1="${EXPORT_PATH}/output_1.apks"
-# extract-apks 从 OUT_PUT_APKS_PATH_1的APK 集中提取设备专用 APK
-OUT_PUT_APKS_PATH_2="${EXPORT_PATH}/output_2.apks"
+OUT_PUT_APKS_PATH="${EXPORT_PATH}/output_1.apks"
+# extract-apks 从 OUT_PUT_APKS_PATH的APK 集中提取设备专用 APK
+EXTRACT_APK_FROM_APKS_PATH="${EXPORT_PATH}/output_2.apks"
 # extract-apks 使用的设备规范 JSON
 SAMSUNG_S9_PATH="${WORKSPACE}/jenkins_scripts/Tools/Samsung_S9.json"    
 
@@ -43,8 +43,8 @@ echo "APK_NAME=${APK_NAME}"
 echo "EXPORT_APK_PATH=${EXPORT_APK_PATH}"
 echo "BUILD_AAB=${BUILD_AAB}"
 echo "GOOGLE_PLAY_AAB_PATH=${GOOGLE_PLAY_AAB_PATH}"
-echo "OUT_PUT_APKS_PATH_1=${OUT_PUT_APKS_PATH_1}"
-echo "OUT_PUT_APKS_PATH_2=${OUT_PUT_APKS_PATH_2}"
+echo "OUT_PUT_APKS_PATH=${OUT_PUT_APKS_PATH}"
+echo "EXTRACT_APK_FROM_APKS_PATH=${EXTRACT_APK_FROM_APKS_PATH}"
 echo "SAMSUNG_S9_PATH=${SAMSUNG_S9_PATH}"
 
 
@@ -63,8 +63,8 @@ $UNITY_PATH -projectPath $PROJECT_PATH \
 echo "Export apk and aab success"
 
 #BundleTools
-java -jar ${BUNDLE_TOOL_PATH} build-apks --bundle=${GOOGLE_PLAY_AAB_PATH} --output=${OUT_PUT_APKS_PATH_1}
-java -jar ${BUNDLE_TOOL_PATH} extract-apks --apks=${OUT_PUT_APKS_PATH_1} --output-dir=${OUT_PUT_APKS_PATH_2} --device-spec=${SAMSUNG_S9_PATH}
+java -jar ${BUNDLE_TOOL_PATH} build-apks --bundle=${GOOGLE_PLAY_AAB_PATH} --output=${OUT_PUT_APKS_PATH}
+java -jar ${BUNDLE_TOOL_PATH} extract-apks --apks=${OUT_PUT_APKS_PATH} --output-dir=${EXTRACT_APK_FROM_APKS_PATH} --device-spec=${SAMSUNG_S9_PATH}
 
 
 echo "this is android_distribute.sh end"
