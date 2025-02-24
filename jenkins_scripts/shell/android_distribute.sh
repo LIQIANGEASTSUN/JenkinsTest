@@ -31,7 +31,7 @@ export GOOGLE_PLAY_AAB_PATH="${EXPORT_PATH}/googlePlay.aab"
 # build-apks 命令从aab 生成的 apk 组路径
 OUT_PUT_APKS_PATH="${EXPORT_PATH}/output_1.apks"
 # extract-apks 从 OUT_PUT_APKS_PATH的APK 集中提取设备专用 APK
-EXTRACT_APK_FROM_APKS_PATH="${EXPORT_PATH}/output_2.apks"
+EXTRACT_APK_FROM_APKS_PATH="${EXPORT_PATH}/ExtractApk"
 # extract-apks 使用的设备规范 JSON
 SAMSUNG_S9_PATH="${WORKSPACE}/jenkins_scripts/Tools/Samsung_S9.json"    
 
