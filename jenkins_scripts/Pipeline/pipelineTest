@@ -1,21 +1,21 @@
 pipeline {
     agent any
-    //options {
-        //skipDefaultCheckout() // 禁用默认的 SCM 检出
-    //}
+    options {
+        skipDefaultCheckout() // 禁用默认的 SCM 检出
+    }
     stages {
-        //stage('Checkout') {
-           // steps {
-               // script {
-                    // 自定义工作空间路径
-                  //  def customWorkspace = "${env.WORKSPACE}/PipelineTestDir"
-                   // ws(customWorkspace) {
-                        // 手动拉取代码
-                    //    checkout scm
-                   // }
-                //}
-           // }
-        //}
+        stage('Checkout') {
+            steps {
+                script {
+                     自定义工作空间路径
+                    def customWorkspace = "${env.WORKSPACE}/ABC"
+                    ws(customWorkspace) {
+                         手动拉取代码
+                        checkout scm
+                    }
+                }
+            }
+        }
         stage('Build') {
             steps {
                 script {
