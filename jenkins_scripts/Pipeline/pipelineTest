@@ -7,10 +7,10 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                     自定义工作空间路径
-                    def customWorkspace = "${env.WORKSPACE}/ABC"
+                    // 自定义工作空间路径
+                    def customWorkspace = "${env.WORKSPACE}/custom_workspace"
                     ws(customWorkspace) {
-                         手动拉取代码
+                        // 手动拉取代码
                         checkout scm
                     }
                 }
@@ -21,7 +21,6 @@ pipeline {
                 script {
                     // 在自定义工作空间中执行构建命令
                     sh 'echo "Building in custom workspace"'
-					echo "workspace=${env.WORKSPACE}"
                 }
             }
         }
