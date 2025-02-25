@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    options {
+        skipDefaultCheckout() // 禁用默认的 SCM 检出
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    // 自定义工作空间路径
+                    def customWorkspace = "/Users/liqiang/.jenkins/workspace/PipelineTestDir"
+                    ws(customWorkspace) {
+                        // 手动拉取代码
+                        checkout scm
+                    }
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    // 在自定义工作空间中执行构建命令
+                    sh 'echo "Building in custom workspace"'
+                }
+            }
+        }
+    }
+}
