@@ -21,7 +21,7 @@ pipeline {
                 script {
                     // 在自定义工作空间中执行构建命令
                     sh 'echo "Building in custom workspace"'
-					echo "workspace={WORKSPACE}"
+					echo "workspace={env.WORKSPACE}"
                 }
             }
         }
